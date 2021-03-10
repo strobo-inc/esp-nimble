@@ -205,8 +205,10 @@ get_nvs_db_attribute(int obj_type, bool empty, void *value, int num_value)
              * non-matching entry from NVS */
             if (value) {
                 if (obj_type == BLE_STORE_OBJ_TYPE_PEER_DEV_REC) {
-                    err = get_nvs_matching_index(&p_dev_rec, value, num_value,
-                                                 sizeof(struct ble_hs_dev_records));
+                    err = get_nvs_matching_index(&p_dev_rec.peer_sec,
+                                                 &((struct ble_hs_dev_records *)value)->peer_sec,
+                                                 num_value,
+                                                 sizeof(struct ble_hs_peer_sec));
                 } else {
                     if (obj_type != BLE_STORE_OBJ_TYPE_CCCD) {
                         err = get_nvs_matching_index(&cur.sec, value, num_value,
