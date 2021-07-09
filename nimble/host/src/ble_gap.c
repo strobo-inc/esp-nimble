@@ -907,7 +907,7 @@ ble_gap_master_ticks_until_exp(void)
     return 0;
 }
 
-#if !MYNEWT_VAL(BLE_EXT_ADV)
+#if NIMBLE_BLE_ADVERTISE && !MYNEWT_VAL(BLE_EXT_ADV)
 static uint32_t
 ble_gap_slave_ticks_until_exp(void)
 {
@@ -1801,7 +1801,7 @@ ble_gap_master_timer(void)
     return BLE_HS_FOREVER;
 }
 
-#if !MYNEWT_VAL(BLE_EXT_ADV)
+#if NIMBLE_BLE_ADVERTISE && !MYNEWT_VAL(BLE_EXT_ADV)
 static int32_t
 ble_gap_slave_timer(void)
 {
@@ -1900,7 +1900,7 @@ ble_gap_timer(void)
 
     min_ticks = min(master_ticks, update_ticks);
 
-#if !MYNEWT_VAL(BLE_EXT_ADV)
+#if NIMBLE_BLE_ADVERTISE && !MYNEWT_VAL(BLE_EXT_ADV)
     min_ticks = min(min_ticks, ble_gap_slave_timer());
 #endif
 
