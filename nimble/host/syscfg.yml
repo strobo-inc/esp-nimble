@@ -280,7 +280,7 @@ syscfg.defs:
     BLE_GATT_MAX_PROCS:
         description: >
             The maximum number of concurrent client GATT procedures. (0/1)
-        value: 4
+        value: 8
     BLE_GATT_RESUME_RATE:
         description: >
             The rate to periodically resume GATT procedures that have stalled
